@@ -1,0 +1,15 @@
+{
+    "Portocala": {"color1": "Black", "color2": "White"},
+    "Oreo": {"color1": "Black", "color2": "White"},
+    "Panda": {"color1": "Black", "color2": "White"},
+    "Pinguin": {"color1": "Black", "color2": "White"},
+    "Zebra": {"color1": "Black", "color2": "White"},
+    "Cafea": {"color1": "Brown", "color2": "White"},
+    "Banana": {"color1": "Orange", "color2": null},
+    "Cauciuc": {"color1": "Gray", "color2": "White"},
+    "Carte": {"color1": "Brown", "color2": null},
+    "Nor": {"color1": "White", "color2": "Gray"},
+    "Stalp": {"color1": "Black", "color2": "Blue"},
+    "Soarece": {"color1": "Yellow", "color2": "Orange"},
+    "Furculita": {"color1": "Tan", "color2": "White"}
+}

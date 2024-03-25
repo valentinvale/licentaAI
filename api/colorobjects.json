@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Portocala", 
+        "color1": "Orange", 
+        "color2": "Yellow"
+    },   
+    {
+        "name": "Oreo", 
+        "color1": "Black", 
+        "color2": "White"
+    },
+    {
+        "name": "Panda", 
+        "color1": "Black", 
+        "color2": "White"
+    },
+    {
+        "name": "Pinguin", 
+        "color1": "Black", 
+        "color2": "White"
+    },
+    {
+        "name": "Zebra", 
+        "color1": "Black", 
+        "color2": "White"
+    },
+    {
+        "name": "Cafea", 
+        "color1": "Brown", 
+        "color2": "White"
+    },
+    {
+        "name": "Banana", 
+        "color1": "Orange", 
+        "color2": null
+    },
+    {
+        "name":"Cauciuc", 
+        "color1": "Gray", 
+        "color2": "White"
+    },
+    {
+        "name": "Carte", 
+        "color1": "Brown", 
+        "color2": null
+    },
+    {
+        "name": "Nor", 
+        "color1": "White", 
+        "color2": "Gray"
+    },
+    {
+        "name": "Stalp", 
+        "color1": "Black", 
+        "color2": "Blue"
+    },
+    {
+        "name": "Soarece", 
+        "color1": "Yellow", 
+        "color2": "Orange"
+    },
+    {
+        "name": "Furculita", 
+        "color1": "Gray", 
+        "color2": "White"
+    }
+]

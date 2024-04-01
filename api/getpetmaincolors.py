@@ -50,4 +50,8 @@ def getpetmaincolors(petimage, num_clusters=3, ignore_black=True):
 
     palette_img = palette(clt)
 
+    # Print color proportions
+    for color, proportion in zip(dominant_colors, proportions):
+        print(f"Color: {color}, Proportion: {proportion:.2f}")
+
     return dominant_colors, proportions, palette_img

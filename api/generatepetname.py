@@ -75,7 +75,10 @@ def generatepetname(petimage, pet_type="pet"):
     if dominant_colors[len(dominant_colors)-1][1] > 0.20:
         use_both_colors = True
     reddit_names = generatepetnamereddit.get_pet_names(closest_colors[0], closest_colors[1], pet_type=pet_type, two_colors=use_both_colors, limit=500, pos=False)
-    full_name_pool = pregenerated_name_pool + reddit_names
+    if reddit_names == []:
+        full_name_pool = pregenerated_name_pool
+    else:
+        full_name_pool = reddit_names
     petname = random.choice(full_name_pool)
     return dominant_colors, proportions, palette, closest_colors, sorted_objects, petname
 

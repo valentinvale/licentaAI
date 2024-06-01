@@ -21,7 +21,11 @@ catsubreddits = ["aww", "Pets", "cats", "Catswithjobs"]
 dogsubreddits = ["aww", "Pets", "dogs", "dogswithjobs"]
 
 reddit = praw.Reddit(
-    
+    client_id='z_yeSt_azbvYgHBAeATnDw',
+    client_secret='hFUlPqA13eu9QGSYuWTxl6UAkCHXKg',
+    user_agent='script:petname generator:v1.0 (by u/YogurtclosetSharp745)',
+    username='YogurtclosetSharp745 ',
+    password='Auras123!'
 )
 
 def preprocess_text(text):
@@ -118,6 +122,8 @@ def get_pet_names(pet_color1, pet_color2, pet_type="pet", two_colors=False, limi
             names.append(name.title())
 
     print(pet_type)
+
+    print(names)
 
     return list(names)
 

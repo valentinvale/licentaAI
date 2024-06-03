@@ -4,6 +4,7 @@ from io import BytesIO
 import numpy as np
 import pandas as pd
 from keras.models import load_model
+from get_pet_features_from_breed import get_pet_features
 
 
 def format_breed_name(breed_name):
@@ -49,15 +50,17 @@ def predict_breed(image_url, pet_type):
     
     predicted_class = filtered_classes[predicted_index]
     predicted_class_ro = filtered_classes_ro[predicted_index]
+
+    pet_features = get_pet_features(predicted_class)
     
-    return format_breed_name(predicted_class), format_breed_name(predicted_class_ro)
+    return pet_features, format_breed_name(predicted_class), format_breed_name(predicted_class_ro)
 
     
 if __name__ == '__main__':
     image_url = 'https://fureverhomeucv.s3.eu-central-1.amazonaws.com/load4_10c0b9e1-3e3e-4b3a-9475-a9268f645414/f78b3958-d7cd-4423-baa0-0c430d9578a4_cattest2.jpeg'
     pet_type = 0
-    breed, breed_ro = predict_breed(image_url, pet_type)
-    print(breed, breed_ro)
+    features, breed, breed_ro = predict_breed(image_url, pet_type)
+    print(features, breed, breed_ro)
 
     
 

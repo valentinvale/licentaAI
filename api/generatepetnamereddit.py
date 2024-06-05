@@ -72,7 +72,7 @@ def is_name(word, pos=False):
         return pos_tag[0][1] == 'NNP'
     potential_name = nlp(word)
     if potential_name.ents:
-        return potential_name.ents[0].label_ == 'PERSON'
+        return "PERSON" in [ent.label_ for ent in potential_name.ents]
     else:
         return False
 

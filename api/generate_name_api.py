@@ -52,8 +52,12 @@ def preprocess_input(data, expected_columns):
     # Convert JSON to DataFrame
     df = pd.DataFrame([data])
 
+    print("Original Input Data:\n", df.head())  # Debugging statement
+
     # Handle categorical variables using one-hot encoding
     df = pd.get_dummies(df)
+
+    print("Data after One-Hot Encoding:\n", df.head())  # Debugging statement
 
     # Add missing columns from training data and set them to 0
     missing_cols = set(expected_columns) - set(df.columns)
@@ -63,6 +67,8 @@ def preprocess_input(data, expected_columns):
     # Ensure the DataFrame has the columns in the same order as the training data
     df = df[expected_columns]
 
+    print("Preprocessed DataFrame:\n", df.head())  # Debugging statement
+
     return df
 
 
@@ -71,22 +77,22 @@ def predict_compatibility():
     try:
         data = request.get_json(force=True)
 
-        print(data)
+        print("Received Data:\n", data)  # Debugging statement
         
         existing_breed = data['pet_breed']
 
-        if get_unformated_breed_name(existing_breed) != None:
+        if get_unformated_breed_name(existing_breed) is not None:
             existing_breed = get_unformated_breed_name(data['pet_breed']) 
 
         user_data = {
-            'personality': data['personality'],
-            'activity_level': data['activity_level'],
-            'work_schedule': data['work_schedule'],
-            'living_environment': data['living_environment'],
-            'has_children': data['has_children'],
-            'has_other_pets': data['has_other_pets'],
-            'hypoallergenic': data['hypoallergenic'],
-            'low_maintenance': data['low_maintenance']
+            'user_personality': int(data['personality']),
+            'user_activity_level': int(data['activity_level']),
+            'user_work_schedule': int(data['work_schedule']),
+            'user_living_environment': int(data['living_environment']),
+            'user_has_children': int(data['has_children']),
+            'user_has_other_pets': int(data['has_other_pets']),
+            'user_hypoallergenic': int(data['hypoallergenic']),
+            'user_low_maintenance': int(data['low_maintenance'])
         }
 
         pet_data = {
@@ -102,18 +108,25 @@ def predict_compatibility():
 
         combined_data = {**user_data, **pet_data}
 
+        print("Combined Data:\n", combined_data)  # Debugging statement
+
         # Load the expected columns used during training
         with open('../model_features.pkl', 'rb') as file:
             expected_columns = pickle.load(file)
 
+        print("Expected Columns:\n", expected_columns)  # Debugging statement
+
         # Preprocess the input data to match the training data format
         user_df = preprocess_input(combined_data, expected_columns)
+
+        print("Processed User DataFrame:\n", user_df.head())  # Debugging statement
 
         # Make prediction
         prediction = model.predict(user_df)
         prediction_prob = model.predict_proba(user_df)[:, 1]
 
-        print(prediction, prediction_prob)
+        print("Prediction:", prediction)  # Debugging statement
+        print("Prediction Probability:", prediction_prob)  # Debugging statement
 
         return jsonify({
             'prediction': int(prediction[0]),
@@ -121,6 +134,7 @@ def predict_compatibility():
         })
     except Exception as e:
         return jsonify({'error': str(e)})
+
 
 
 if __name__ == '__main__':
